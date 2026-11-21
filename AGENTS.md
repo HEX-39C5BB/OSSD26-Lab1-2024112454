@@ -24,3 +24,5 @@ Use Rust's built-in test harness. Name tests for observable behavior, such as `r
 ## Commit & Pull Request Guidelines
 
 Follow the [branch naming rules](doc/branch-naming.md) and use short, imperative commit subjects such as “Document chunk lifecycle invariants.” In pull requests, summarize the change, identify relevant specification sections or decision IDs, report validation, and link related issues when available. For changes to confirmed RCF decisions, record the rationale, affected modules, compatibility risks, migration impact, tests, and decision source.
+
+R7：B2 分支独立修改，用于验证未合并分支。
