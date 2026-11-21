@@ -41,3 +41,7 @@ cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
 - [代码风格与测试约定](AGENTS.md)和[分支命名规范](doc/branch-naming.md)
 
 项目自有源码采用 `GPL-3.0-or-later`。
+
+## Lab1 实验记录
+
+R3：验证工作区修改与差异查看。
