@@ -1,0 +1,40 @@
+[workspace]
+members = [
+    "crates/authority",
+    "crates/host",
+    "crates/mod-api",
+    "crates/persistence",
+    "crates/scene",
+    "crates/vulkan",
+    "crates/world",
+]
+default-members = ["crates/host"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+publish = false
+
+[workspace.dependencies]
+rustcraft-world = { path = "crates/world" }
+rustcraft-mod-api = { path = "crates/mod-api" }
+rustcraft-authority = { path = "crates/authority" }
+rustcraft-persistence = { path = "crates/persistence" }
+rustcraft-scene = { path = "crates/scene" }
+rustcraft-vulkan = { path = "crates/vulkan" }
+bevy_ecs = { version = "0.20.1", default-features = false, features = ["std"] }
+semver = "1.0"
+ash = "0.38"
+ash-window = "0.13"
+raw-window-handle = "0.6"
+winit = { version = "0.30", default-features = false, features = ["rwh_06", "x11", "wayland", "wayland-dlopen"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tempfile = "3.27"
+sha2 = "0.10"
+glam = "0.33"
+bytemuck = { version = "1.25", features = ["derive"] }
+cpal = { version = "0.18.2", default-features = false, features = ["pipewire"] }
+rodio = { version = "=0.23.0", default-features = false, features = ["playback"] }

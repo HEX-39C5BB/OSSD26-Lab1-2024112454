@@ -1,0 +1,36 @@
+[package]
+name = "rustcraft-host"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[features]
+client = ["dep:rustcraft-vulkan", "dep:rustcraft-scene", "dep:serde", "dep:tempfile", "dep:cpal", "dep:rodio"]
+dev-tools = ["rustcraft-authority/dev-tools", "rustcraft-vulkan?/dev-tools"]
+
+[dependencies]
+rustcraft-authority.workspace = true
+rustcraft-persistence.workspace = true
+rustcraft-world.workspace = true
+serde_json.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+rustcraft-vulkan = { workspace = true, optional = true }
+rustcraft-scene = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+tempfile = { workspace = true, optional = true }
+cpal = { workspace = true, optional = true }
+rodio = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[[bin]]
+name = "rustcraft-server"
+path = "src/bin/server.rs"
+
+[[bin]]
+name = "rustcraft-client"
+path = "src/bin/client.rs"
+required-features = ["client"]

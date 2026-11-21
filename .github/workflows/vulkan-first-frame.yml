@@ -1,0 +1,29 @@
+name: Vulkan first frame
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  first-frame:
+    name: Vulkan first frame on GPU
+    if: github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, Linux, X64, rustcraft-gpu]
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Build client
+        run: cargo build --locked -p rustcraft-host --features client --bin rustcraft-client
+      - name: Present the first terrain frame
+        shell: bash
+        run: |
+          log="$RUNNER_TEMP/rustcraft-vulkan-first-frame.log"
+          timeout 90s target/debug/rustcraft-client --terrain-smoke 2>&1 | tee "$log"
+          grep -Eq '^event=vulkan_terrain_device device_type=(INTEGRATED_GPU|DISCRETE_GPU) ' "$log"
+          grep -Fxq 'event=vulkan_terrain_first_frame_presented' "$log"

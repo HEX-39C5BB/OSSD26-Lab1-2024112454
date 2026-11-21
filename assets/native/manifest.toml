@@ -1,0 +1,10 @@
+id = "rustcraft_content:native"
+version = "0.2.0"
+materials = "materials.json"
+
+[dependencies]
+
+[audio]
+"rustcraft_content:block_place" = "sounds/place.wav"
+"rustcraft_content:block_break" = "sounds/break.wav"
+"rustcraft_content:footstep" = "sounds/step.wav"
